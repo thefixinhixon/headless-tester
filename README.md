@@ -92,3 +92,7 @@ sudo apt install xvfb xdotool imagemagick gdb elfutils
 You can also skip the interview: copy `templates/headless_run.sh` and
 `templates/headless.conf.example` (as `headless.conf`) into `tools/linux/`, and fill in the config
 and the **Project specifics** section of `docs/headless.md` yourself.
+
+## License
+
+[MIT](LICENSE)
