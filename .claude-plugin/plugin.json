@@ -1,0 +1,8 @@
+{
+  "name": "headless-tester",
+  "version": "0.1.0",
+  "description": "Headless game testing on a shared Linux desktop: an interview sets up an Xvfb harness, then agents run crash-rate, gdb, perf and profiling tests without touching your screens, speakers or controller.",
+  "author": { "name": "thefixinhixon" },
+  "repository": "https://github.com/thefixinhixon/headless-tester",
+  "keywords": ["testing", "headless", "xvfb", "games", "linux", "vulkan", "sdl"]
+}

@@ -1,0 +1,12 @@
+{
+  "name": "headless-tester",
+  "description": "Headless game testing for agents on a shared Linux desktop",
+  "owner": { "name": "thefixinhixon" },
+  "plugins": [
+    {
+      "name": "headless-tester",
+      "source": "./",
+      "description": "Interview-driven setup of an Xvfb test harness for games, plus the rules and commands agents use day to day"
+    }
+  ]
+}

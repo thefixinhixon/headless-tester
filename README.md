@@ -31,6 +31,24 @@ Clone this repo, open your coding agent (Claude Code, Codex, Cursor, …) in it,
 
 It won't launch anything on your screens, won't commit without asking, and never pushes.
 
+### As a Claude Code skill
+
+Install it as a plugin, then just ask from inside your game project ("set up headless testing",
+"get a crash rate for the level 3 crash"), or run `/headless-tester`:
+
+```
+/plugin install headless-tester --marketplace thefixinhixon/headless-tester
+```
+
+On older Claude Code versions: `/plugin marketplace add thefixinhixon/headless-tester`, then
+`/plugin install headless-tester@headless-tester`.
+
+For a local clone you want to edit, link it as a personal skill instead (use one or the other,
+not both): `ln -s "$PWD" ~/.claude/skills/headless-tester`.
+
+Once your project is set up, the skill also covers day-to-day testing: Claude follows the
+project's rules and harness whenever it needs to run the game.
+
 ## What ends up in your project
 
 ```

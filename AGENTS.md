@@ -32,9 +32,10 @@ into ~/src/mygame", follow the phases below in order.
 
 ## Phase 0: probe (no questions yet)
 
-1. Ask for the one thing you need to begin, if the user didn't say it: **the path to the game
-   project** (the source repo the build comes from).
-2. Run `scripts/check_env.sh [<game-executable>]` from this repo. It is read-only. Note:
+1. Find **the game project** (the source repo the build comes from). If the user named a path, use
+   it; if the session is already in a game project (loaded as a skill), confirm that's the one;
+   otherwise ask.
+2. Run `scripts/check_env.sh [<game-executable>]` from this repo (the skill's base directory). It is read-only. Note:
    missing tools, Wayland vs X11, GPU and Vulkan driver, `perf_event_paranoid`, `ptrace_scope`,
    X displays already in use, controller candidates, and copies of the game already running.
 3. Read the target project: README, build files (CMake presets, Makefile, meson, cargo), existing
