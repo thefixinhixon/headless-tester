@@ -1,0 +1,35 @@
+# headless.conf: project settings for headless_run.sh (sourced as bash).
+# The setup interview in AGENTS.md fills this in. Every value below is an example.
+
+REPO="$(cd "$HERE/../.." && pwd)"           # project root, relative to this file
+
+# --- the game --------------------------------------------------------------------------------
+GAME=mygame                                  # executable name inside BUILD_DIR
+BUILD_DIR_DEFAULT="$REPO/out/build/release"  # override per agent with BUILD_DIR=...
+COPY_FILES=("$GAME" "*.so")                  # copied from BUILD_DIR into the run dir (globs ok)
+ASSET_LINKS=("assets=$REPO/game")            # name=target symlinks created in the run dir
+
+# Minimal config written into the run dir (never the user's config). Empty name = none.
+RUN_CONFIG_NAME=config.toml
+RUN_CONFIG_CONTENT="log_file = 'game.log'
+keyboard_pad = true"
+LOG_GLOB='game*.log'                         # log files in the run dir; empty = use stdout
+
+# --- safety (always on the command line, config values may be ignored) -----------------------
+SAFETY_FLAGS=(--mute --input_backend=none)
+PAD_IGNORE=""                                # the user's pads for SDL, e.g. 0x045e/0x0b12,0x054c/0x0ce6
+GRAPHICS=vulkan                              # vulkan (adds MESA_VK_WSI_DEBUG=sw) | opengl
+EXTRA_ENV=()                                 # e.g. (MESA_SHADER_CACHE_DIR=/tmp/mygame-shadercache)
+
+# --- detection -------------------------------------------------------------------------------
+CRASH_RE='Unhandled access violation|FATAL'  # one match = the run counts as a crash
+PAD_RE='ControllerDeviceAdded'               # log line printed when a real controller is opened
+GDB_BREAK=""                                 # crash-reporting function to break on (GDB=1)
+GDB_PASS_SIGNALS=(SIGBUS SIGUSR1 SIGUSR2 SIGPIPE)  # add SIGSEGV if the runtime uses it internally
+
+# --- driving ---------------------------------------------------------------------------------
+DEFAULT_KEYS=(45:Return 60:Return 75:space 90:space)  # boot -> gameplay
+DISPLAY_NUM_DEFAULT=91                       # one per agent
+SCREEN=1920x1080x24
+SHOT_SIZE=640x360
+MAX_GAMES=2                                  # headless games allowed at once on this machine
